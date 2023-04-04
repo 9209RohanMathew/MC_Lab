@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+    <h1>Upload a File</h1>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+    <hr>
+    <h1>Download Files</h1>
+    <ul>
+        {% for filename in os.listdir(app.config['UPLOAD_FOLDER']) %}
+            <li><a href="/download/{{ filename }}">{{ filename }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
